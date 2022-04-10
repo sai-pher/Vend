@@ -28,37 +28,9 @@ class _InventoryScreenState extends State<InventoryScreen> {
 
   List<Item> _searchItemList = items;
 
-  List<Item>? getItems(List<Item> items, String searchWord) {
-    List<Item> res = [];
-    if (searchWord.isEmpty){
-      res = items;
-    } else {
-      res = items
-          .where((item) => item.name!.toLowerCase().contains(searchWord.toLowerCase()))
-          .toList();
-    }
-
-    setState(() {
-      _searchItemList = res;
-    });
-  }
-
   _inventoryScreen() {
-    return Column(
-      children: [
-        const SizedBox(
-          height: 20,
-        ),
-        TextField(
-          onChanged: (value) => getItems(items, value),
-          decoration: const InputDecoration(
-              labelText: 'Search', suffixIcon: Icon(Icons.search)),
-        ),
-        const SizedBox(
-          height: 20,
-        ),
-        ItemListWidget(items: _searchItemList)
-      ],
+    return Container(
+      child: ItemListWidget(items: _searchItemList),
     );
   }
 }

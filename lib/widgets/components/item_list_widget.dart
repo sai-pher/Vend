@@ -13,16 +13,49 @@ class ItemListWidget extends StatefulWidget {
 
 class _ItemListWidgetState extends State<ItemListWidget> {
 
+  List<ItemDisplayWidget> _searchItemList = [];
+
+  List<ItemDisplayWidget>? getItems(String searchWord) {
+    List<ItemDisplayWidget> res = [];
+    if (searchWord.isEmpty) {
+      res = widget.items.map((item) => ItemDisplayWidget(item: item)).toList();
+    } else {
+      res = widget.items
+          .where((item) => item.name!.toLowerCase().contains(searchWord.toLowerCase()))
+          .map((item) => ItemDisplayWidget(item: item))
+          .toList();
+    }
+
+    setState(() {
+      _searchItemList = res;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    return Expanded(
-        child: GridView.count(
-          crossAxisCount: 2,
-          padding: const EdgeInsets.all(20),
-          children: widget.items.map((item) => ItemDisplayWidget(item: item)).toList(),
-        )
+    return Column(
+      children: [
+        const SizedBox(
+          height: 20,
+        ),
+        TextField(
+          onChanged: (value) => getItems(value),
+          decoration: const InputDecoration(
+              labelText: 'Search', suffixIcon: Icon(Icons.search)),
+        ),
+        const SizedBox(
+          height: 20,
+        ),
+        Expanded(
+            child: GridView.count(
+              crossAxisCount: 2,
+              padding: const EdgeInsets.all(20),
+              children: _searchItemList.length > 0 ? _searchItemList : widget.items.map((item) => ItemDisplayWidget(item: item)).toList(),
+            )
+        ),
+      ]
     );
+
   }
 }
