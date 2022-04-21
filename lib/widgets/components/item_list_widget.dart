@@ -33,9 +33,22 @@ class _ItemListWidgetState extends State<ItemListWidget> {
 
   @override
   Widget build(BuildContext context) {
+
+    List<ItemDisplayWidget> itemList = widget.items.map((item) => ItemDisplayWidget(item: item)).toList();
+
     // TODO: implement build
     return Column(
       children: [
+        const SizedBox(
+          height: 20,
+        ),
+        Expanded(
+            child: GridView.count(
+              crossAxisCount: 2,
+              padding: const EdgeInsets.all(20),
+              children: _searchItemList.isNotEmpty ? _searchItemList : itemList,
+            )
+        ),
         const SizedBox(
           height: 20,
         ),
@@ -46,13 +59,6 @@ class _ItemListWidgetState extends State<ItemListWidget> {
         ),
         const SizedBox(
           height: 20,
-        ),
-        Expanded(
-            child: GridView.count(
-              crossAxisCount: 2,
-              padding: const EdgeInsets.all(20),
-              children: _searchItemList.length > 0 ? _searchItemList : widget.items.map((item) => ItemDisplayWidget(item: item)).toList(),
-            )
         ),
       ]
     );

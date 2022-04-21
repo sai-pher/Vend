@@ -11,11 +11,7 @@ class InventoryScreen extends StatefulWidget {
 
 class _InventoryScreenState extends State<InventoryScreen> {
 
-  @override
-  Widget build(BuildContext context) {
-    return _inventoryScreen();
-  }
-
+  static Size? size;
   static List<Item> items = [
     Item('image', 'name', 'type', 10, 2, 30, 10),
     Item('image', 'name', 'type', 10, 2, 30, 10),
@@ -26,10 +22,20 @@ class _InventoryScreenState extends State<InventoryScreen> {
     Item('image', 'game', 'type', 10, 2, 30, 10),
   ];
 
-  List<Item> _searchItemList = items;
+  @override
+  Widget build(BuildContext context) {
 
-  _inventoryScreen() {
-    return Container(
+    size = MediaQuery.of(context).size;
+
+    return _inventoryScreen(size!);
+  }
+
+
+  final List<Item> _searchItemList = items;
+
+  _inventoryScreen(Size size) {
+    return SizedBox(
+      height: size.height * 0.8,
       child: ItemListWidget(items: _searchItemList),
     );
   }

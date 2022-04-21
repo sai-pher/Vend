@@ -3,6 +3,7 @@ import 'package:vend/pages/analytics_page.dart';
 import 'package:vend/pages/checkout_page.dart';
 import 'package:vend/pages/home_page.dart';
 import 'package:vend/pages/inventory_page.dart';
+import 'package:vend/pages/item_detail_page.dart';
 
 import 'app/labels.dart';
 
@@ -23,6 +24,7 @@ class MyApp extends StatelessWidget {
           inventoryRoute: (context) => const InventoryPage(),
           checkoutRoute: (context) => const CheckoutPage(),
           analyticsRoute: (context) => const AnalyticsPage(),
+          itemDetailRoute: (context) => const ItemDetailPagePage(),
         },
         title: 'Vend',
         theme: ThemeData(

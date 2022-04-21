@@ -27,3 +27,4 @@ const String homeRoute = '/home';
 const String analyticsRoute = '/analytics';
 const String inventoryRoute = '/inventory';
 const String checkoutRoute = '/checkout';
+const String itemDetailRoute = '/detail';
