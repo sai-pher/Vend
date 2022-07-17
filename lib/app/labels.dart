@@ -28,3 +28,7 @@ const String analyticsRoute = '/analytics';
 const String inventoryRoute = '/inventory';
 const String checkoutRoute = '/checkout';
 const String itemDetailRoute = '/detail';
+
+// ================= Route Names =================
+
+const String itemBox = 'item_box';

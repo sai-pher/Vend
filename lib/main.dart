@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:vend/pages/analytics_page.dart';
 import 'package:vend/pages/checkout_page.dart';
 import 'package:vend/pages/home_page.dart';
@@ -7,7 +8,12 @@ import 'package:vend/pages/item_detail_page.dart';
 
 import 'app/labels.dart';
 
-void main() {
+void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+  
+  await Hive.initFlutter();
+  await Hive.openBox(itemBox);
+
   runApp(const MyApp());
 }
 
