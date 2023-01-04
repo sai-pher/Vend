@@ -17,28 +17,26 @@ class ItemDisplayWidget extends StatelessWidget {
             const Spacer(),
             const Icon(Icons.ac_unit_sharp, color: Colors.black,),
             const Spacer(),
-            Text(item.name!, style: const TextStyle(color: Colors.lightBlue),)
+            Text(item.name, style: const TextStyle(color: Colors.lightBlue),)
           ],
         )
     );
   }
 
   _itemControl() {
-    return Container(
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          FlatButton(
-            onPressed: () {},
-              child: Text(item.price!.toString())
-          ),
-          FlatButton(
-            onPressed: () {},
-              child: Text(item.count!.toString())
-          ),
-        ],
-      ),
+    return Row(
+      mainAxisSize: MainAxisSize.min,
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        FlatButton(
+          onPressed: () {},
+            child: Text(item.price.toString())
+        ),
+        FlatButton(
+          onPressed: () {},
+            child: Text(item.count.toString())
+        ),
+      ],
     );
   }
 

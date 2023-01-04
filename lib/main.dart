@@ -7,12 +7,12 @@ import 'package:vend/pages/inventory_page.dart';
 import 'package:vend/pages/item_detail_page.dart';
 
 import 'app/labels.dart';
+import 'data/db/item_box.dart';
 
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
   
-  await Hive.initFlutter();
-  await Hive.openBox(itemBox);
+  ItemBox.checkDatabaseExists();
 
   runApp(const MyApp());
 }

@@ -31,4 +31,4 @@ const String itemDetailRoute = '/detail';
 
 // ================= Route Names =================
 
-const String itemBox = 'item_box';
+const String itemBoxName = 'item_box';

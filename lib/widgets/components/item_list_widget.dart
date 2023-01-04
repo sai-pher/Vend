@@ -12,7 +12,6 @@ class ItemListWidget extends StatefulWidget {
 }
 
 class _ItemListWidgetState extends State<ItemListWidget> {
-
   List<ItemDisplayWidget> _searchItemList = [];
 
   List<ItemDisplayWidget>? getItems(String searchWord) {
@@ -21,7 +20,8 @@ class _ItemListWidgetState extends State<ItemListWidget> {
       res = widget.items.map((item) => ItemDisplayWidget(item: item)).toList();
     } else {
       res = widget.items
-          .where((item) => item.name!.toLowerCase().contains(searchWord.toLowerCase()))
+          .where((item) =>
+              item.name.toLowerCase().contains(searchWord.toLowerCase()))
           .map((item) => ItemDisplayWidget(item: item))
           .toList();
     }
@@ -33,35 +33,31 @@ class _ItemListWidgetState extends State<ItemListWidget> {
 
   @override
   Widget build(BuildContext context) {
-
-    List<ItemDisplayWidget> itemList = widget.items.map((item) => ItemDisplayWidget(item: item)).toList();
+    List<ItemDisplayWidget> itemList =
+        widget.items.map((item) => ItemDisplayWidget(item: item)).toList();
 
     // TODO: implement build
-    return Column(
-      children: [
-        const SizedBox(
-          height: 20,
-        ),
-        Expanded(
-            child: GridView.count(
-              crossAxisCount: 2,
-              padding: const EdgeInsets.all(20),
-              children: _searchItemList.isNotEmpty ? _searchItemList : itemList,
-            )
-        ),
-        const SizedBox(
-          height: 20,
-        ),
-        TextField(
-          onChanged: (value) => getItems(value),
-          decoration: const InputDecoration(
-              labelText: 'Search', suffixIcon: Icon(Icons.search)),
-        ),
-        const SizedBox(
-          height: 20,
-        ),
-      ]
-    );
-
+    return Column(children: [
+      const SizedBox(
+        height: 20,
+      ),
+      Expanded(
+          child: GridView.count(
+        crossAxisCount: 3,
+        padding: const EdgeInsets.all(20),
+        children: _searchItemList.isNotEmpty ? _searchItemList : itemList,
+      )),
+      const SizedBox(
+        height: 20,
+      ),
+      TextField(
+        onChanged: (value) => getItems(value),
+        decoration: const InputDecoration(
+            labelText: 'Search', suffixIcon: Icon(Icons.search)),
+      ),
+      const SizedBox(
+        height: 20,
+      ),
+    ]);
   }
 }

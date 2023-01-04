@@ -18,7 +18,7 @@ class Sale {
       items[item] = items[item]! + 1;
     }
     total += item.price!;
-  }
+  } 
 
   removeItem(Item item){
     if(items.containsKey(item)){
